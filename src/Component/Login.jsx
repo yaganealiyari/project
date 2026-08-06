@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import notify from "../Utils/notfiy";
@@ -13,14 +13,15 @@ const loginValidation = yup.object({
     .string()
     .required("Password is required")
     .min(6, "Password must be at least 6 characters")
-    .max(30, "Password must be at most 30 characters")  
+    .max(30, "Password must be at most 30 characters")
     .matches(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/,
       "Password must contain uppercase, lowercase, number and special character",
     ),
 });
 
-export default function Login({ handlePageType, handleToken }) {
+export default function Login({ handlePageType }) {
+  const { handleToken } = useContext(AuthContext);
   const formik = useFormik({
     initialValues: {
       username: "",
