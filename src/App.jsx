@@ -1,12 +1,15 @@
-import React from "react";
-import Prouducts from "./Components/Prouducts";
-import Prouductcard from "./Components/Prouductcard";
+import React, { useState } from "react";
 
 export default function App() {
-  return (
-    <div>
-      <Prouducts />
-      <Prouductcard />
-    </div>
-  );
+  const tk = localStorage.getItem("auth");
+  const [token, setToken] = useState(tk);
+  const handleToken = (tkn) => {
+    if (tkn) {
+      localStorage.setItem("token", tkn);
+    } else {
+      localStorage.removeItem("token");
+    }
+    setToken(tkn);
+  };
+  return <>{token ? <TodoList /> : <Auth />}</>;
 }
