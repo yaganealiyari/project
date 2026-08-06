@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Login from "./Login";
 import Register from "./Register";
 
-export default function Auth() {
+export default function Auth({ handleToken }) {
   const [pageType, setPageType] = useState("login");
   const handlePageType = () => {
     setPageType(pageType === "login" ? "register" : "login");
@@ -10,7 +10,7 @@ export default function Auth() {
   return (
     <>
       {pageType === "login" ? (
-        <Login handlePageType={handlePageType} />
+        <Login handleToken={handleToken} handlePageType={handlePageType} />
       ) : (
         <Register handlePageType={handlePageType} />
       )}

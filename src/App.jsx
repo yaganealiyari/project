@@ -13,5 +13,5 @@ export default function App() {
     }
     setToken(tkn);
   };
-  return <>{token ? <TodoList /> : <Auth />}</>;
+  return <>{token ? <TodoList /> : <Auth handleToken={handleToken} />}</>;
 }
