@@ -13,7 +13,7 @@ const loginValidation = yup.object({
     .string()
     .required("Password is required")
     .min(6, "Password must be at least 6 characters")
-    .max(30, "Password must be at most 30 characters")
+    .max(30, "Password must be at most 30 characters")  
     .matches(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/,
       "Password must contain uppercase, lowercase, number and special character",
